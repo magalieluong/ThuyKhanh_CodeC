@@ -182,6 +182,7 @@
 
 //bài 4: nhập vào 3 số nguyên a,b,c. Tìm số lớn nhất trong 3 số 
 // sử dùng && cho so sánh 1 biến lớn nhất
+// hoặc dùng toán tử 3 ngôi a>b thì xét tiếp a>c in a ko thì in c, nếu a<b thì xét tiếp b>c thì in b sai thì in c
 //#include <stdio.h>
 //void main() {
 //	int a = 0;
@@ -278,6 +279,7 @@
 //}
 
 //bài 7: in số chẵn, yêu cầu người dùng nhập n và in ra tất cả số chẵn trong khoảng từ 1 đến n
+// hoặc là áp đụng for từ i = 2 với bước nhảy 2 để ra số chẵn
 //#include <stdio.h>
 //void main() {
 //	int n = 0;
@@ -302,3 +304,24 @@
 //	}
 //	printf("Tong tu 1 den n la: %d \n", sum);
 //}
+
+//Bai 16: cho chương trình random ra 1 số từ 1-99, cho ng dùng nhập nào đoán đúng thì th
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+void main() {
+	int n = 0;
+	srand(time(NULL)); // NULL nghĩa là không có gì
+	int dem = 0;
+	int x = rand() %100;// để lấy 2 số thôi, vì x ban đầu số rất lớn, chỉ lấy 2 số đuôi
+	printf("%d", x);
+	do {
+		printf("Nhap so ban doan: \n");
+		scanf_s("%d", &n);
+		if (n>x) printf("Nho hon \n");
+		if (n < x) printf("Lon hon \n"); // để tránh trường hợp =
+		dem += 1;
+	} while (n != x);
+	printf("Chuc mung ban da doan dung so bi mat sau %d lan !\n", dem);
+}
