@@ -362,14 +362,14 @@ void main() {
 			step = 3;
 			break;
 		case 3:
-			if (so_tien_rut > so_du_atm || so_tien_rut <= 0) {
-				printf("So tien muon rut khong hop le ! Vui long nhap lai ! \n");
-				step = 2;
+			if (so_tien_rut <= so_du_atm && so_tien_rut > 0) {
+				printf("Dang tien hanh rut tien...\n");
+				step = 4;
 				break;
 			}
 			else {
-				printf("Dang tien hanh rut tien...\n");
-				step = 4;
+				printf("So tien muon rut khong hop le ! Vui long nhap lai ! \n");
+				step = 2;
 				break;
 			}
 		case 4:
