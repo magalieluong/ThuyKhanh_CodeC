@@ -306,22 +306,93 @@
 //}
 
 //Bai 16: cho chương trình random ra 1 số từ 1-99, cho ng dùng nhập nào đoán đúng thì th
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <math.h>
+//#include <time.h>
+//void main() {
+//	int n = 0;
+//	srand(time(NULL)); // NULL nghĩa là không có gì
+//	int dem = 0;
+//	int x = rand() %100;// để lấy 2 số thôi, vì x ban đầu số rất lớn, chỉ lấy 2 số đuôi
+//	printf("%d", x);
+//	do {
+//		printf("Nhap so ban doan: \n");
+//		scanf_s("%d", &n);
+//		if (n>x) printf("Nho hon \n");
+//		if (n < x) printf("Lon hon \n"); // để tránh trường hợp =
+//		dem += 1;
+//	} while (n != x);
+//	printf("Chuc mung ban da doan dung so bi mat sau %d lan !\n", dem);
+//}
+
+//số tiền khách hàng muốn rút 
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <time.h>
 void main() {
-	int n = 0;
-	srand(time(NULL)); // NULL nghĩa là không có gì
-	int dem = 0;
-	int x = rand() %100;// để lấy 2 số thôi, vì x ban đầu số rất lớn, chỉ lấy 2 số đuôi
-	printf("%d", x);
-	do {
-		printf("Nhap so ban doan: \n");
-		scanf_s("%d", &n);
-		if (n>x) printf("Nho hon \n");
-		if (n < x) printf("Lon hon \n"); // để tránh trường hợp =
-		dem += 1;
-	} while (n != x);
-	printf("Chuc mung ban da doan dung so bi mat sau %d lan !\n", dem);
+	int so_du_atm = 20000000; //số dư tài khoản
+	int mat_khau_system = 123456; //mật khẩu hệ thống lưu
+	int mat_khau_user = 0; //mật khẩu người dùng nhập
+	int so_tien_rut = 0; //số tiền muốn rút
+	int step = 1;
+	char lua_chon = 'a';
+	int sai = 0;
+	while (step !=5) {
+		switch (step) {
+		case 1:
+			printf("Nhap mk: "); scanf("%d", &mat_khau_user);
+			if (mat_khau_user == mat_khau_system) {
+				printf("Mat khau da dung !\n");
+				step = 2;
+			}
+			else {
+				sai += 1;
+				if (sai == 3) {
+					printf("Da nhap sai mat khau qua 3 lan !\n");
+					step = 5;
+				}
+				else {
+					printf("Da nhap sai mat khau %d lan!\n", sai);
+					step = 6;
+				}
+			}
+			break;
+		case 2:
+			printf("Nhap so tien muon rut: \n"); scanf("%d", &so_tien_rut);
+			step = 3;
+			break;
+		case 3:
+			if (so_tien_rut > so_du_atm || so_tien_rut <= 0) {
+				printf("So tien muon rut khong hop le ! Vui long nhap lai ! \n");
+				step = 2;
+				break;
+			}
+			else {
+				printf("Dang tien hanh rut tien...\n");
+				step = 4;
+				break;
+			}
+		case 4:
+			printf("So tien can rut la: %d\n", so_tien_rut);
+			printf("So tien con lai trong tai khoan la: %d\n", so_du_atm - so_tien_rut);
+			step = 5;
+			break;
+		case 6:
+				printf("Co muon tiep tuc khong y/n?: \n");
+				scanf(" %c", &lua_chon); // nhớ tab 1 cái rồi %c -> " %c"
+				if (lua_chon == 'y') {
+					step = 1;
+					break;
+				}
+				else if (lua_chon=='n'){
+					step = 5;
+					break;
+				}
+				else {
+					printf("Vui long nhap lua chon theo y hoac n !\n");
+					step =6;
+					break;
+				}
+		}
+	} printf("ket thuc! \n");
 }
