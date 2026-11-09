@@ -453,7 +453,7 @@
 //	}
 //	}
 //}
-
+//
 //nhập vào n, in các số nguyên tố < n
 //#define _CRT_SECURE_NO_WARNINGS
 //#include <stdio.h>
@@ -480,4 +480,163 @@
 //		}
 //	}
 //	
+//}
+
+//bài 6: viết chương trình tìm ước số chung lớn nhất của 2 số nguyên. 
+// Nhập 2 số nguyên A,B và in ra màn hình ước chung lớn nhất của A và B
+// ucln luôn là số dương => C
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int a = 0;
+//	int b = 0;
+//	int ucln = 0;
+//	int truong_hop = 0;
+//	printf("Vui long nhap vao so nguyen a: \n");
+//	scanf("%d", &a);
+//	printf("Vui long nhap vao so nguyen b: \n");
+//	scanf("%d", &b);
+//	if (a < 0) {
+//		a = -a;
+//	}
+//	if (b < 0) {
+//		b = -b;
+//	}
+//	if (a == 0 || b == 0) {
+//		printf("Vui long nhap so khac 0");
+//	}
+//	else if (a == 1 || b == 1) {
+//		printf("Uoc chung lon nhat cua a va b la: 1\n");
+//	}
+//	else {
+//		if (a < b) {
+//			for (int i = 1;i <= a / 2;i++) {
+//				if (a % i == 0 && b % i == 0) {
+//					ucln = i;
+//				}
+//			}
+//		}
+//		else {
+//			for (int i = 1;i <= b / 2;i++) {
+//				if (a % i == 0 && b % i == 0) {
+//					ucln = i;
+//				}
+//			}
+//		}
+//		printf("Uoc chung lon nhat cua a va b la: %d\n", ucln);
+//	}
+//}
+
+//bài 7: viết chương trình tính tích phân của f(x) = x^2 từ a đến b theo phương pháp hình thang với tần số lấy mẫu 1000 lần
+// nhập vào 2 số nguyên a,b và in ra màn hình kết quả của tích phân hàm f(x) trong khoảng từ a đến b
+// độ cao hình thang = (b-a)/số hình thang với a là x1
+#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+#include <stdio.h>
+void main() {
+	int a = 0; // cận bắt đầu
+	int b = 0; // cận kết thúc
+	double x1 = 0; // đỉnh cạnh trên hình thang
+	double x2 = 0; // đỉnh cạnh dưới hình thang
+	double h = 0; // delta x, độ cao hình thang
+	double dien_tich = 0;
+	double tong = 0; // tổng diện tích
+	printf("Vui long nhap vao so nguyen a: \n");
+	scanf("%d", &a);
+	printf("Vui long nhap vao so nguyen b: \n");
+	scanf("%d", &b);
+	h = (b - a)*1.0 / 1000; //chia thành 1000 hình thang
+	for (int i = 0; i < 1000;i++) { //khi i=0 thì x1=a
+		x1 = a + i * h; // đi từ a qua i bước dài h 
+		x2 = x1 + h; // vị trí kết thúc theo x1
+		dien_tich = (x1 * x1 + x2 * x2) * h / 2; // công thức S = (f(x1)+f(x2))*(h/2) - diện tích hình thang biểu diễn trên đồ thị
+		tong += dien_tich; // cộng các diện tích hình thang lại
+	}
+	printf("Tich phan cua f(x) = x^2 tu %d den %d la: %.4lf\n", a,b,tong);
+}
+
+//bài 8: Viết chương trình tìm bội chung nhỏ nhất của 2 số nguyên.
+//nhập vào 2 số nguyên a,b và in ra màn hình bội chung nhỏ nhất của A và B:
+// bội chung nhỏ nhất luôn là số nguyên dương => set số âm về dương cho đỡ trường hợp
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int a = 0;
+//	int b = 0;
+//	int bcnn = 0;
+//	printf("Vui long nhap vao so nguyen a: \n");
+//	scanf("%d", &a);
+//	printf("Vui long nhap vao so nguyen b: \n");
+//	scanf("%d", &b);
+//	if (a == 0 || b == 0) {
+//		printf("Vui long nhap so khac 0.\n");
+//	}
+//	else {
+//		if (a < 0) {
+//			a = -a;
+//		}
+//		if (b < 0) {
+//			b = -b;
+//		}
+//		if (a < b) {
+//			for (int i = 1;; i++) {
+//				if ((b*i) % a == 0) {
+//					bcnn = b*i;
+//					break;
+//				}
+//			}
+//		}
+//		else {
+//			for (int i = 1;; i++) {
+//				if ((a * i) % b == 0) {
+//					bcnn = a * i;
+//					break;
+//				}
+//			}
+//		}
+//		printf("Boi chung nho nhat cua a va b la: %d\n", bcnn);
+//	}
+//}
+
+//bài 9: Viết chương trình mô phỏng việc trả tiền của máy ATM.
+// số tiền nhập vào phải là bội số của 50000
+// số tiền phải trả về đầy đủ các mệnh giá từ 50000 đến 500000
+// in ra số lượng tờ tiền được rút
+// nếu muốn trả đủ mỗi mệnh giá ít nhất 1 tờ thì cần rút trên 850.000, còn trả đủ 4 mệnh giá nhưng 0 tờ được thì không sao
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int tien = 0;
+//	int nam_muoi = 0;
+//	int mot_tram = 0;
+//	int hai_tram = 0;
+//	int nam_tram = 0;
+//	printf("Vui long nhap vao so tien can rut (voi so tien la boi so cua 50000): \n");
+//	scanf("%d", &tien);
+//	if (tien % 50000 != 0) {
+//		printf("Vui long chi nhap so tien la boi so cua 50000!\n");
+//	}
+//	else {
+//		while (tien > 0) {
+//			if (tien >= 50000) {
+//				tien -= 50000;
+//				nam_muoi += 1;
+//			}
+//			if (tien >= 100000) {
+//				tien -= 100000;
+//				mot_tram += 1;
+//			}
+//			if (tien >= 200000) {
+//				tien -= 200000;
+//				hai_tram += 1;
+//			}
+//			if (tien >= 500000) {
+//				tien -= 500000;
+//				nam_tram += 1;
+//			}
+//		}
+//		printf("%d x 50000\n", nam_muoi);
+//		printf("%d x 100000\n", mot_tram);
+//		printf("%d x 200000\n", hai_tram);
+//		printf("%d x 500000\n", nam_tram);
+//	}
 //}
