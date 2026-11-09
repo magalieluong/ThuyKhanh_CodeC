@@ -484,7 +484,8 @@
 
 //bài 6: viết chương trình tìm ước số chung lớn nhất của 2 số nguyên. 
 // Nhập 2 số nguyên A,B và in ra màn hình ước chung lớn nhất của A và B
-// ucln luôn là số dương => C
+// ucln luôn là số dương
+// gán min = a hoặc b (dùng toán tử 3 ngôi)
 //#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
 //#include <stdio.h>
 //void main() {
@@ -510,14 +511,14 @@
 //	}
 //	else {
 //		if (a < b) {
-//			for (int i = 1;i <= a / 2;i++) {
+//			for (int i = 1;i <= a / 2;i++) { //hoặc chạy vòng lặp từ b về 1 để tìm số lớn nhất, nma ko dùng được số âm
 //				if (a % i == 0 && b % i == 0) {
 //					ucln = i;
 //				}
 //			}
 //		}
 //		else {
-//			for (int i = 1;i <= b / 2;i++) {
+//			for (int i = 1;i <= b / 2;i++) { //hoặc chạy vòng lặp từ b về 1 để tìm số lớn nhất, nma ko dùng được số âm 
 //				if (a % i == 0 && b % i == 0) {
 //					ucln = i;
 //				}
@@ -530,29 +531,29 @@
 //bài 7: viết chương trình tính tích phân của f(x) = x^2 từ a đến b theo phương pháp hình thang với tần số lấy mẫu 1000 lần
 // nhập vào 2 số nguyên a,b và in ra màn hình kết quả của tích phân hàm f(x) trong khoảng từ a đến b
 // độ cao hình thang = (b-a)/số hình thang với a là x1
-#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
-#include <stdio.h>
-void main() {
-	int a = 0; // cận bắt đầu
-	int b = 0; // cận kết thúc
-	double x1 = 0; // đỉnh cạnh trên hình thang
-	double x2 = 0; // đỉnh cạnh dưới hình thang
-	double h = 0; // delta x, độ cao hình thang
-	double dien_tich = 0;
-	double tong = 0; // tổng diện tích
-	printf("Vui long nhap vao so nguyen a: \n");
-	scanf("%d", &a);
-	printf("Vui long nhap vao so nguyen b: \n");
-	scanf("%d", &b);
-	h = (b - a)*1.0 / 1000; //chia thành 1000 hình thang
-	for (int i = 0; i < 1000;i++) { //khi i=0 thì x1=a
-		x1 = a + i * h; // đi từ a qua i bước dài h 
-		x2 = x1 + h; // vị trí kết thúc theo x1
-		dien_tich = (x1 * x1 + x2 * x2) * h / 2; // công thức S = (f(x1)+f(x2))*(h/2) - diện tích hình thang biểu diễn trên đồ thị
-		tong += dien_tich; // cộng các diện tích hình thang lại
-	}
-	printf("Tich phan cua f(x) = x^2 tu %d den %d la: %.4lf\n", a,b,tong);
-}
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int a = 0; // cận bắt đầu
+//	int b = 0; // cận kết thúc
+//	double x1 = 0; // đỉnh cạnh trên hình thang
+//	double x2 = 0; // đỉnh cạnh dưới hình thang
+//	double h = 0; // delta x, độ cao hình thang
+//	double dien_tich = 0;
+//	double tong = 0; // tổng diện tích
+//	printf("Vui long nhap vao so nguyen a: \n");
+//	scanf("%d", &a);
+//	printf("Vui long nhap vao so nguyen b: \n");
+//	scanf("%d", &b);
+//	h = (b - a)*1.0 / 1000; //chia thành 1000 hình thang
+//	for (int i = 0; i < 1000;i++) { //khi i=0 thì x1=a
+//		x1 = a + i * h; // đi từ a qua i bước dài h 
+//		x2 = x1 + h; // vị trí kết thúc theo x1
+//		tong += (x1 * x1 + x2 * x2) * h / 2; // công thức S = (f(x1)+f(x2))*(h/2) - diện tích hình thang biểu diễn trên đồ thị
+//		// rồi cộng mấy diện tích này lại
+//	}
+//	printf("Tich phan cua f(x) = x^2 tu %d den %d la: %.4lf\n", a,b,tong);
+//}
 
 //bài 8: Viết chương trình tìm bội chung nhỏ nhất của 2 số nguyên.
 //nhập vào 2 số nguyên a,b và in ra màn hình bội chung nhỏ nhất của A và B:
@@ -578,7 +579,7 @@ void main() {
 //			b = -b;
 //		}
 //		if (a < b) {
-//			for (int i = 1;; i++) {
+//			for (int i = 1;; i++) { //hoặc cứ cho nó chạy từ số lớn hơn đến a*b
 //				if ((b*i) % a == 0) {
 //					bcnn = b*i;
 //					break;
@@ -586,7 +587,7 @@ void main() {
 //			}
 //		}
 //		else {
-//			for (int i = 1;; i++) {
+//			for (int i = 1;; i++) { //hoặc cứ cho nó chạy từ số lớn hơn đến a*b
 //				if ((a * i) % b == 0) {
 //					bcnn = a * i;
 //					break;
@@ -606,37 +607,89 @@ void main() {
 //#include <stdio.h>
 //void main() {
 //	int tien = 0;
-//	int nam_muoi = 0;
-//	int mot_tram = 0;
-//	int hai_tram = 0;
-//	int nam_tram = 0;
-//	printf("Vui long nhap vao so tien can rut (voi so tien la boi so cua 50000): \n");
+//	int nam_muoi = 1;
+//	int mot_tram = 1; 
+//	int hai_tram = 1;
+//	int nam_tram = 1;
+//	printf("Vui long nhap vao so tien can rut (voi so tien la boi so cua 50000 va lon hon 850000 dong): \n");
 //	scanf("%d", &tien);
-//	if (tien % 50000 != 0) {
-//		printf("Vui long chi nhap so tien la boi so cua 50000!\n");
+//	if (tien % 50000 != 0 || tien < 850000) { // hoặc ghép 2 điều kiện chạy 1 if
+//		printf("Vui long chi nhap so tien la boi so cua 50000 và toi thieu la 850000!\n");
 //	}
 //	else {
-//		while (tien > 0) {
-//			if (tien >= 50000) {
-//				tien -= 50000;
-//				nam_muoi += 1;
-//			}
-//			if (tien >= 100000) {
-//				tien -= 100000;
-//				mot_tram += 1;
+//		tien -= 850000;
+//		while (tien > 0) { //chạy từ lớn đến nhỏ 
+//			if (tien >= 500000) {   // có thể áp dụng mảng để chạy chia lần lượt các giá trị cho nhanh
+//				tien -= 500000;
+//				nam_tram += 1;
 //			}
 //			if (tien >= 200000) {
 //				tien -= 200000;
 //				hai_tram += 1;
 //			}
-//			if (tien >= 500000) {
-//				tien -= 500000;
-//				nam_tram += 1;
+//			if (tien >= 100000) {
+//				tien -= 100000;
+//				mot_tram += 1;
+//			}
+//			if (tien >= 50000) {
+//				tien -= 50000;
+//				nam_muoi += 1;
 //			}
 //		}
-//		printf("%d x 50000\n", nam_muoi);
-//		printf("%d x 100000\n", mot_tram);
-//		printf("%d x 200000\n", hai_tram);
-//		printf("%d x 500000\n", nam_tram);
+//		printf("So to 50,000: %d \n", nam_muoi);
+//		printf("So to 100,000: %d \n", mot_tram);
+//		printf("So to 200,000: %d \n", hai_tram);
+//		printf("So to 500,000: %d \n", nam_tram);
 //	}
 //}
+
+//làm quen với mảng 
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	char str[] = "hello"; //như dưới 
+//	char str1[] = {'h','e','l','l','o' }; //như trên 
+//	int x = str[1];
+//	int y = str[1];
+//	printf("%c\n%c\n", x, y); //check thử giống ko:))
+//	int a[2] = { 10,20 };
+//	int len = sizeof(a) / sizeof(a[0]);
+//	for (int i = 0;i < len;i++) {
+//		printf("a[%d]: %d\n", i,a[i]);
+//	}
+//}
+
+// cho mảng ban đầu, cộng tổng các giá trị có trong mảng
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int arr[] = { 2,4,6,8,10 };
+//	int sum = 0;
+//	int tbc = 0;
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	for (int i = 0; i < len;i++) {
+//		sum += arr[i];
+//	}
+//	printf("Tong la: %d\n", sum);
+//	printf("Trung binh cong la: %.1f\n", sum*1.0/len);
+//}  
+
+//cho mảng, tìm gtnn, gtln
+#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+#include <stdio.h>
+void main() {
+	int arr[] = { 4, 9, 2, -1, 7 };
+	int max = arr[0]; //làm chuẩn
+	int min = arr[0];
+	int len = sizeof(arr) / sizeof(arr[0]);
+	for (int i = 1; i < len;i++) {
+		if (arr[i] > max) {
+			max = arr[i];
+		}
+		if(arr[i] < min){
+			min = arr[i];
+		}
+	}
+	printf("Gia tri lon nhat la: %d\n", max);
+	printf("Gia tri nho nhat la: %d\n", min);
+}
