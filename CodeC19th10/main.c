@@ -675,21 +675,158 @@
 //}  
 
 //cho mảng, tìm gtnn, gtln
-#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
-#include <stdio.h>
-void main() {
-	int arr[] = { 4, 9, 2, -1, 7 };
-	int max = arr[0]; //làm chuẩn
-	int min = arr[0];
-	int len = sizeof(arr) / sizeof(arr[0]);
-	for (int i = 1; i < len;i++) {
-		if (arr[i] > max) {
-			max = arr[i];
-		}
-		if(arr[i] < min){
-			min = arr[i];
-		}
-	}
-	printf("Gia tri lon nhat la: %d\n", max);
-	printf("Gia tri nho nhat la: %d\n", min);
-}
+//#define _CRT_SECURE_NO_WARNINGS //luôn define cái này trước hàm include
+//#include <stdio.h>
+//void main() {
+//	int arr[] = { 4, 9, 2, -1, 7 };
+//	int max = arr[0]; //làm chuẩn
+//	int min = arr[0];
+//	int len = sizeof(arr) / sizeof(arr[0]);
+//	for (int i = 1; i < len;i++) {
+//		if (arr[i] > max) {
+//			max = arr[i];
+//		}
+//		if(arr[i] < min){
+//			min = arr[i];
+//		}
+//	}
+//	printf("Gia tri lon nhat la: %d\n", max);
+//	printf("Gia tri nho nhat la: %d\n", min);
+//}
+
+//Bài 5: đếm số nguyên tố trong mảng. Nhập n(1<=n<=100) và số nguyên vào mảng. In các số nguyên tố trong mảng và đếm số lượng. 
+// Nếu không có, in "Khong co so nguyen to"
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//	void main() {
+//	int n = 0;
+//	int mang[100] = {0}; //giới hạn là 100 số nguyên được nhập vào
+//	int dem = 0;
+//	printf("Nhap so luong so nguyen: ");
+//	scanf("%d", &n);
+//	printf("Nhap cac so nguyen: ");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	}
+//	for (int i = 0;i < n;i++) {
+//		int snt = 1;
+//		if (mang[i] < 2) {
+//			snt = 0;
+//		}
+//		for (int j = 2;j < mang[i];j++) {
+//			if (mang[i] % j == 0) {
+//				snt = 0;
+//				break;
+//			}
+//		}
+//		if (snt == 1) {
+//			if (dem == 0) {
+//				printf("Cac so nguyen to: ");
+//			}
+//			printf("%d ", mang[i]);
+//			dem++;
+//		}
+//	}
+//	if (dem == 0) {
+//		printf("Khong co so nguyen to\n");
+//	}
+//	else {
+//		printf("\nSo luong: %d", dem);
+//	}
+//}
+
+	//printf("Vui long nhap so luong n phan tu co trong mang (1<=n<=100): \n");
+	//scanf("%d", n);
+	//printf("Vui long nhap cac phan tu: \n");
+	//int len = sizeof(so_nguyen) / sizeof(so_nguyen[0]);
+
+
+//bài 6: Đảo ngược mảng. Nhập n(1<=n<=100) và n số nguyên vào mảng. Đảo ngược thứ tự các phần tử ngay trong mảng ban đầu (không dùng mảng phụ) 
+//// sau đó in mảng
+//#define _CRT_SECURE_NO_WARNINGS //dùng biến gán tạm
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int dem = 0;
+//	int tam = 0; //biến lưu tạm
+//	printf("Vui long nhap so luong phan tu co trong mang: \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	}
+//	for (int i = 0;i < n;i++) {
+//		if (i == n / 2) {   //chứ không để nó lặp 
+//			break;
+//		}
+//		tam = mang[i];
+//		mang[i] = mang[n - i-1];
+//		mang[n - i - 1] = tam;
+//	}
+//	for (int i = 0;i < n;i++) {
+//		printf("%d ", mang[i]);
+//	}
+//}
+
+//#define _CRT_SECURE_NO_WARNINGS // dùng mảng phụ
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int dem = 0;
+//	int mang_moi[100] = { 0 };
+//	printf("Vui long nhap so luong phan tu co trong mang: \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]); //lưu các phần tử input vào mảng
+//		dem++;
+//	}
+//	for (int i = 0;i < n;i++) {
+//		mang_moi[i] = mang[i];
+//	}
+//	for (int i = 0;i < dem;i++) {    // đảo ngược các phần tử 
+//		mang_moi[i] = mang[dem-i-1];  
+//	}
+//	for (int i = 0; i < dem;i++) {
+//		printf("%d ", mang_moi[i]);
+//	}
+//}
+
+//bài 7:Tìm kiếm phần tử trong mảng. Nhập n (1<=n<=100), n số nguyên và số nguyên x. In tất cả vị trí x xuất hiện trong mảng (vị trí tính từ 1)
+// Nếu không có, in "khong tim thay"
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int dem = 0;
+//	int x = 0;
+//	int vi_tri[100] = { 0 };
+//	int lap = 0;
+//	printf("Vui long nhap so luong phan tu co trong mang: \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]); //lưu các phần tử input vào mảng
+//	}
+//	printf("Vui long nhap vao so can kiem tra: \n");
+//	scanf("%d", &x);
+//	for (int i = 0; i < n;i++) {
+//		dem++;
+//		if (mang[i] == x) {
+//			vi_tri[lap] = dem;
+//			lap++;
+//		}
+//	}
+//	if (lap == 0) {
+//		printf("Khong tim thay");
+//	}
+//	else {
+//		printf("Vi tri: ");
+//		for (int i = 0;i < lap;i++) {
+//			printf("%d ", vi_tri[i]);
+//		}
+//	}
+//}
