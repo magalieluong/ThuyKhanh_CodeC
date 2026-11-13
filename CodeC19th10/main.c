@@ -696,12 +696,13 @@
 
 //Bài 5: đếm số nguyên tố trong mảng. Nhập n(1<=n<=100) và số nguyên vào mảng. In các số nguyên tố trong mảng và đếm số lượng. 
 // Nếu không có, in "Khong co so nguyen to"
+// Cách khác: có thể dùng bien kiem_tra để check snt thay vì gán index = 0 lỡ sau này cần thao tác trên mảng
 //#define _CRT_SECURE_NO_WARNINGS 
 //#include <stdio.h>
 //#include<math.h>
 //void main() {
 //	int n = 0;
-//	int mang[100] = { 0 };
+//	int mang[100] = { 0 }; //không truyền biến vào giá trị khởi tạo ban đầu của mảng
 //	int dem = 0;
 //	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
 //	scanf("%d", &n);
@@ -731,10 +732,10 @@
 //		printf("Khong co so nguyen to.");
 //	}
 //	else {
-//		printf("Cac so nguyen to: ");
+//		printf("Cac so nguyen to: "); // hoặc print thẳng ở trên vòng lặp lúc check cho nhanh
 //		for (int i = 0;i < n;i++) {
 //			if (mang[i] != 0) {
-//				printf("%d ", mang[i]);
+//				printf("%d ", mang[i]); 
 //			}
 //		}
 //		printf("\nSo luong: %d", n - dem);
@@ -764,7 +765,7 @@
 //		tam = mang[i];
 //		mang[i] = mang[n - i - 1];
 //		mang[n - i - 1] = tam;
-//	}
+//	} printf("Mang sau khi dao nguoc: \n");
 //	for (int i = 0;i < n;i++) {
 //		printf("%d ", mang[i]);
 //	}
@@ -830,3 +831,103 @@
 //	}
 //}
 
+//Bài tập thêm: kiểm tra mảng tăng dần
+//kiểm tra mảng có tăng nghiêm ngặt hay không - mọi phần tử đứng sau đều lớn hơn phần tử đứng trước
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int kiem_tra = 1;
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	}
+//	for (int i = 1; i < n;i++) {
+//		if (mang[i] < mang[i - 1]) {
+//			kiem_tra = 0;
+//		}
+//	}
+//	if (kiem_tra) {
+//		printf("Day la mang tang dan. ");
+//	}
+//	else {
+//		printf("Day khong phai la mang tang dan. ");
+//	}
+//}
+
+//bài 9: sắp xếp mảng tăng dần, sắp xếp theo thứ tự từ nhỏ đến lớn
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int tam = 0;
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	}
+//	for (int i = 0; i < n;i++) {
+//		for (int h = 0; h <n;h++) {
+//			if (mang[i] < mang[h]) {
+//				tam = mang[i];
+//				mang[i] = mang[h];
+//				mang[h] = tam;
+//			}
+//		}
+//	} for (int i = 0; i < n;i++) {
+//		printf("%d ", mang[i]);
+//	}
+//}
+
+//bài 10: xóa phần tử tại vị trí k
+// nhập mảng n phần tử và vị trí k (tính từ 1)
+//// xóa phần tử ở vị trí k, dịch phần tử phía sau sang trái r in mảng mới
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int k = 0;
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	} printf("Vui long nhap vi tri k (tinh tu 1): \n");
+//	scanf("%d", &k);
+//	for (int i = k-1; i < n;i++) {
+//		mang[i] = mang[i + 1];
+//		mang[i + 1] = mang[i +2];
+//	}
+//	for (int i = 0; i < n-1;i++) {
+//		printf("%d ", mang[i]);
+//	}
+//}
+
+
+//bai 11: chèn phần tử vào mảng, nhập mảng n phần tử (1<=n<100), số nguyên x và vị trí k từ 1 đến n+1, chèn x vào vị trí k
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//void main() {
+//	int n = 0;
+//	int mang[100] = { 0 };
+//	int k = 0;
+//	int tam = 0;
+//	int x = 0;
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
+//	scanf("%d", &n);
+//	printf("Vui long nhap cac phan tu trong mang: \n");
+//	for (int i = 0;i < n;i++) {
+//		scanf("%d", &mang[i]);
+//	}
+//	printf("Vui long nhap so nguyen x: \n"); scanf("%d", &x);
+//	printf("Vui long nhap so nguyen k: \n"); scanf("%d",)
+//
+//}
+//
+//
