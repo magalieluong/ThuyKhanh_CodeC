@@ -698,47 +698,48 @@
 // Nếu không có, in "Khong co so nguyen to"
 //#define _CRT_SECURE_NO_WARNINGS 
 //#include <stdio.h>
-//	void main() {
+//#include<math.h>
+//void main() {
 //	int n = 0;
-//	int mang[100] = {0}; //giới hạn là 100 số nguyên được nhập vào
+//	int mang[100] = { 0 };
 //	int dem = 0;
-//	printf("Nhap so luong so nguyen: ");
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
 //	scanf("%d", &n);
-//	printf("Nhap cac so nguyen: ");
+//	while (n < 1 || n>100) {
+//		printf("So luong phan tu nhap khong hop le ! Vui long chi nhap trong khoang tu 1-100: \n");
+//		scanf("%d", &n);
+//	}
+//	printf("Vui long nhap cac phan tu trong mang: \n");
 //	for (int i = 0;i < n;i++) {
 //		scanf("%d", &mang[i]);
 //	}
 //	for (int i = 0;i < n;i++) {
-//		int snt = 1;
-//		if (mang[i] < 2) {
-//			snt = 0;
+//		if (mang[i] <= 1) {
+//			mang[i] = 0;
+//			dem++;
+//			continue;
 //		}
-//		for (int j = 2;j < mang[i];j++) {
-//			if (mang[i] % j == 0) {
-//				snt = 0;
+//		for (int k = 2;k <= sqrt(mang[i]); k++) {
+//			if (mang[i] % k == 0) {
+//				mang[i] = 0;
+//				dem++;
 //				break;
 //			}
 //		}
-//		if (snt == 1) {
-//			if (dem == 0) {
-//				printf("Cac so nguyen to: ");
-//			}
-//			printf("%d ", mang[i]);
-//			dem++;
-//		}
 //	}
-//	if (dem == 0) {
-//		printf("Khong co so nguyen to\n");
+//	if (dem == n) {
+//		printf("Khong co so nguyen to.");
 //	}
 //	else {
-//		printf("\nSo luong: %d", dem);
+//		printf("Cac so nguyen to: ");
+//		for (int i = 0;i < n;i++) {
+//			if (mang[i] != 0) {
+//				printf("%d ", mang[i]);
+//			}
+//		}
+//		printf("\nSo luong: %d", n - dem);
 //	}
 //}
-
-	//printf("Vui long nhap so luong n phan tu co trong mang (1<=n<=100): \n");
-	//scanf("%d", n);
-	//printf("Vui long nhap cac phan tu: \n");
-	//int len = sizeof(so_nguyen) / sizeof(so_nguyen[0]);
 
 
 //bài 6: Đảo ngược mảng. Nhập n(1<=n<=100) và n số nguyên vào mảng. Đảo ngược thứ tự các phần tử ngay trong mảng ban đầu (không dùng mảng phụ) 
@@ -748,20 +749,20 @@
 //void main() {
 //	int n = 0;
 //	int mang[100] = { 0 };
-//	int dem = 0;
 //	int tam = 0; //biến lưu tạm
-//	printf("Vui long nhap so luong phan tu co trong mang: \n");
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
 //	scanf("%d", &n);
+//	while (n < 1 || n>100) {
+//		printf("So luong phan tu nhap khong hop le ! Vui long chi nhap trong khoang tu 1-100: \n");
+//		scanf("%d", &n);
+//	}
 //	printf("Vui long nhap cac phan tu trong mang: \n");
 //	for (int i = 0;i < n;i++) {
 //		scanf("%d", &mang[i]);
 //	}
-//	for (int i = 0;i < n;i++) {
-//		if (i == n / 2) {   //chứ không để nó lặp 
-//			break;
-//		}
+//	for (int i = 0;i < n / 2;i++) {
 //		tam = mang[i];
-//		mang[i] = mang[n - i-1];
+//		mang[i] = mang[n - i - 1];
 //		mang[n - i - 1] = tam;
 //	}
 //	for (int i = 0;i < n;i++) {
@@ -769,7 +770,7 @@
 //	}
 //}
 
-//#define _CRT_SECURE_NO_WARNINGS // dùng mảng phụ
+//#define _CRT_SECURE_NO_WARNINGS // tham khảo thêm cách dùng mảng phụ
 //#include <stdio.h>
 //void main() {
 //	int n = 0;
@@ -801,12 +802,14 @@
 //void main() {
 //	int n = 0;
 //	int mang[100] = { 0 };
-//	int dem = 0;
 //	int x = 0;
-//	int vi_tri[100] = { 0 };
 //	int lap = 0;
-//	printf("Vui long nhap so luong phan tu co trong mang: \n");
+//	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
 //	scanf("%d", &n);
+//	while (n < 1 || n>100) {
+//		printf("So luong phan tu nhap khong hop le ! Vui long chi nhap trong khoang tu 1-100: \n");
+//		scanf("%d", &n);
+//	}
 //	printf("Vui long nhap cac phan tu trong mang: \n");
 //	for (int i = 0;i < n;i++) {
 //		scanf("%d", &mang[i]); //lưu các phần tử input vào mảng
@@ -814,19 +817,16 @@
 //	printf("Vui long nhap vao so can kiem tra: \n");
 //	scanf("%d", &x);
 //	for (int i = 0; i < n;i++) {
-//		dem++;
 //		if (mang[i] == x) {
-//			vi_tri[lap] = dem;
+//			if (lap == 0) {
+//				printf("Vi tri: ");
+//			}
+//			printf("%d ", i + 1);
 //			lap++;
 //		}
 //	}
 //	if (lap == 0) {
 //		printf("Khong tim thay");
 //	}
-//	else {
-//		printf("Vi tri: ");
-//		for (int i = 0;i < lap;i++) {
-//			printf("%d ", vi_tri[i]);
-//		}
-//	}
 //}
+
