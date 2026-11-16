@@ -1096,3 +1096,37 @@
 //	} printf("Ket thuc chuong trinh.\n"); 
 //	return 0;//báo chương trình chạy thanhf công, kết thúc 
 //}
+
+
+
+
+// -----------------------BÀI MỚI-----------------------------------
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//int main(void) {
+//	int x = 0x1234;
+//	char* px = &x;//biến lưu địa chỉ của x
+//	// nếu đổi từ int sang char chỉ lưu được 34 và 78
+//	printf("Gia tri cua x : %x \n", *px);//xuất ra 34 đọc giá trị tới địa chỉ có vùng nhớ px
+//	printf("Gia tri cua x : %x \n", *(px+1)); // truy cập lên 2 byte -> xuất ra 12 
+//	*px = 0x5678; //ghi giá trị mới vào px
+//	printf("Gia tri cua x : %x \n", *px);
+//	// không được ghi giá trị vào vùng nhớ chưa được cấp -> phải khai báo biến để xin
+//}
+
+#define _CRT_SECURE_NO_WARNINGS 
+#include <stdio.h>
+int main(void) {
+	int arr[] = { 1,2,3,4 };
+	// muốn lấy địa chỉ 
+	// mối liên quan của địa chỉ này áp dụng được với tất cả các kiểu dữ liệu (int,char,...)
+	//arr + 0 = &arr[0];
+	//arr + 1 = &arr [1];
+	//arr + 2 = &arr [2];
+	//arr + 3 = &arr [3];
+	// muốn lấy giá trị thì thêm *
+	//VD: *(arr+0) = arr[0]; giá trị thì arr[0] không gán & lấy địa chỉ nha 
+	//Cú pháp tương đương : *(px + 1) với px[1] kể cả khi printf vẫn dùng được
+
+
+}
