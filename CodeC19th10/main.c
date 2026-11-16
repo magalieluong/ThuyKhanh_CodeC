@@ -913,21 +913,186 @@
 //bai 11: chèn phần tử vào mảng, nhập mảng n phần tử (1<=n<100), số nguyên x và vị trí k từ 1 đến n+1, chèn x vào vị trí k
 //#define _CRT_SECURE_NO_WARNINGS 
 //#include <stdio.h>
-//void main() {
+//int main (void) { //chuẩn C, dễ biên dịch 
 //	int n = 0;
 //	int mang[100] = { 0 };
-//	int k = 0;
-//	int tam = 0;
 //	int x = 0;
+//	int k = 0;
+//	int lua_chon = 1;
+//	while (lua_chon) {
+//		printf("Vui long nhap so luong phan tu co trong mang (1<=n<100): \n");
+//		scanf("%d", &n);
+//		while (n < 1 || n >= 100) {
+//			printf("So luong phan tu nhap khong hop le ! Vui long chi nhap trong khoang tu 1-99: \n");scanf("%d", &n);
+//		}
+//		printf("Vui long nhap cac phan tu trong mang: \n");
+//		for (int i = 0;i < n;i++) {
+//			scanf("%d", &mang[i]);
+//		}printf("Vui long nhap so nguyen x: \n"); scanf("%d", &x);
+//		printf("Vui long nhap vi tri so nguyen k (1->n+1): \n"); scanf("%d", &k);
+//		while (k<1 || k>n + 1) {
+//			printf("Vui long chi nhap vi tri trong khoang tu 1 den n+1 !: \n"); scanf("%d", &k);
+//		}
+//		for (int i = n; i >= k;i--) { //chạy ngược tối ưu hơn, chạy xuôi gán nhiều biến
+//			mang[i] = mang[i - 1];
+//		} mang[k - 1] = x;
+//		for (int i = 0; i <= n;i++) {
+//			printf("%d ", mang[i]);
+//		} printf("\nBan co muon tiep tuc (1: dong y, 0: tu choi): \n");scanf("%d", &lua_chon);
+//	} printf("Ket thuc chuong trinh.\n");
+//	return 0;
+//}
+
+//
+//bài 12: đếm số lần xuất hiện
+//in mỗi giá trị phân biệt trong mảng cùng số lần xuất hiện của nó
+//theo thứ tự xuất hiện đầu tiên
+//giả sử mảng chỉ chứa số nguyên dương <=10
+//không dùng mảng phụ
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//int main(void) { //chuẩn C, dễ biên dịch
+//	int n = 0;
+//	int mang[100] = { 0 };
+//    int xuat_hien = 0;
+//    int dem = 0;
 //	printf("Vui long nhap so luong phan tu co trong mang (1<=n<=100): \n");
 //	scanf("%d", &n);
-//	printf("Vui long nhap cac phan tu trong mang: \n");
+//    while (n < 1 || n>100) {
+//        printf("So luong phan tu nhap khong hop le! Vui long chi nhap trong khoang tu 1-100: \n");scanf("%d", &n);
+//    }
 //	for (int i = 0;i < n;i++) {
-//		scanf("%d", &mang[i]);
+//        printf("Vui long nhap phan tu thu %d trong mang (1-10): ",i+1); //điền từng cái vì cần check đk từng giá trị
+//		scanf("%d", &mang[i]); // 2 3 2 5 3 2 7 5
+//        while (mang[i] < 1 || mang[i]>10) {
+//            printf("Vui long chi nhap gia tri phan tu tu 1-10 ! Nhap lai gia tri thu %d: \n",i+1); scanf("%d", &mang[i]);
+//        }
 //	}
-//	printf("Vui long nhap so nguyen x: \n"); scanf("%d", &x);
-//	printf("Vui long nhap so nguyen k: \n"); scanf("%d",)
-//
+//    for (int i = 0; i < n; i++) {
+//        xuat_hien = 0; //reset số đang xét
+//        dem = 0; //reset số lần đếm
+//        for (int h = 0;h < i;h++) {
+//            if (mang[i] == mang[h]) { //check xem số đó có từng xuất hiện hay chưa
+//                xuat_hien = 1;//xuất hiện trước đó, đã tính r thì bái xuất hiện r ko tính nữa
+//                break;//thoát khỏi vòng lặp h
+//            }
+//        } if (xuat_hien == 1) { //nếu xuất hiện r thì bỏ qua lượt lặp này
+//            continue; //bỏ qua phần còn lại lượt lặp i
+//        } for (int h = i;h < n;h++) { //đếm số lần xuất hiện trong lượt đầu tiên tìm được giá trị mới
+//            if (mang[i] == mang[h]) {
+//                dem++; //tìm thấy trùng thì đếm
+//            }
+//        } printf("So %d xuat hien: %d lan\n", mang[i], dem);
+//    } printf("Ket thuc chuong trinh.");return 0; //báo chạy thành công, kết thúc chương trình
 //}
-//
-//
+
+
+//bài 13: menu quản lý danh sách số nguyên, tạo menu cho phép
+// 1 nhập mảng, 2 xuất mảng, 3 tìm max/min, 4 đếm số chẵn/lẻ,5 sắp xếp tăng dần, 6 tìm kiếm x, 0 thoát
+// menu lặp lại cho đến khi chọn 0, không dduwojx xử lí mảng trước khi nhập
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//int main(void) { //chuẩn C, dễ biên dịch 
+//	int lua_chon = 1;
+//	int mang[100] = { 0 };
+//	int n = 0;
+//	int dem = 0;
+//	int tam = 0;
+//	int x = 0;
+//	int lap = 0;
+//	int max = 0;
+//	int min = 0;
+//	int da_nhap_mang = 0;
+//	while (lua_chon != 0) {
+//		printf("\nMENU\n1. Nhap mang \n2. Xuat mang \n3. Tim max/min \n4. Dem so chan/le \n5. Sap xep tang dan \n6. Tim kiem x \n0. Thoat\n");
+//		printf("Vui long chon 1 tinh nang de thuc hien: "); scanf("%d", &lua_chon); printf("\n");
+//		if (lua_chon >= 2 && lua_chon <= 6 && da_nhap_mang == 0) {
+//			printf("Vui long chon nhap mang truoc khi thuc hien cac tinh nang !: \n");//scanf("%d", &lua_chon);
+//			continue;
+//		}
+//		switch (lua_chon) {
+//		case 1:
+//			printf("Tien hanh nhap mang...\n");
+//			printf("Vui long nhap so luong phan tu co trong mang (1<=so luong<=100): \n");scanf("%d", &n);
+//			while (n < 1 || n>100) {
+//				printf("So luong phan tu trong mang khong hop le! Vui long nhap trong khoang tu 1-100 !: \n");scanf("%d", &n);
+//			}
+//			printf("Vui long nhap cac phan tu trong mang: \n");
+//			for (int i = 0;i < n;i++) {
+//				scanf("%d", &mang[i]);
+//			}da_nhap_mang = 1;
+//			break;
+//		case 2:
+//			printf("Tien hanh xuat mang...\n");
+//			for (int i = 0; i < n;i++) {
+//				printf("%d ", mang[i]);
+//			} printf("\n");break;
+//		case 3:
+//			max = mang[0];
+//			min = mang[0];
+//			printf("Tien hanh tim max/min cua mang...\n");
+//			for (int i = 1; i < n;i++) {
+//				if (mang[i] > max) {
+//					max = mang[i];
+//				}
+//				if(mang[i] < min){
+//					min = mang[i];
+//				}
+//			}
+//			printf("Gia tri lon nhat la: %d\n", max);
+//			printf("Gia tri nho nhat la: %d\n", min);break;
+//		case 4: 
+//			dem = 0;
+//			printf("Tien hanh tim  so chan/le cua mang...\n");
+//			for (int i = 0;i < n;i++) {
+//				if (mang[i]%2==0){
+//					dem++;
+//				}
+//			}
+//			printf("Co %d so chan la: ",dem);
+//			for (int i = 0;i < n;i++) {
+//				if (mang[i] % 2 == 0) {
+//					printf("%d ", mang[i]);
+//				}
+//			} printf("\nCo %d so le la: ", n - dem);
+//			for (int i = 0;i < n;i++) {
+//				if (mang[i] % 2 != 0) {
+//					printf("%d ", mang[i]);
+//				}
+//			}printf("\n");break;
+//			
+//		case 5:
+//			printf("Tien hanh sap xep tang dan...\n");
+//			for (int i = 0; i < n;i++) {
+//				for (int h = 0; h <n;h++) {
+//					if (mang[i] < mang[h]) {
+//						tam = mang[i];
+//						mang[i] = mang[h];
+//						mang[h] = tam;
+//					}
+//				}
+//			} for (int i = 0; i < n;i++) {
+//				printf("%d ", mang[i]);
+//			} printf("\n");break;
+//		case 6:// cái này có cần reset lại mảng sau khi tăng dần không -  để tìm vị trí ở mảng gốc ?
+//			printf("Tien hanh tim kiem x...\n");
+//			printf("Vui long nhap vao so can kiem tra: \n");
+//			scanf("%d", &x);
+//			for (int i = 0; i < n;i++) {
+//				if (mang[i] == x) {
+//					if (lap == 0) {
+//						printf("Vi tri: ");
+//					}
+//					printf("%d ", i + 1);
+//					lap++;
+//				}
+//			}
+//			if (lap == 0) {
+//				printf("Khong tim thay! \n");
+//			} lap = 0;printf("\n");break;
+//		default:
+//			printf("Vui long chon cac tinh nang 0-6 !\n");
+//		}
+//	} printf("Ket thuc chuong trinh.\n"); 
+//	return 0;//báo chương trình chạy thanhf công, kết thúc 
+//}
