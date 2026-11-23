@@ -1113,20 +1113,67 @@
 //	printf("Gia tri cua x : %x \n", *px);
 //	// không được ghi giá trị vào vùng nhớ chưa được cấp -> phải khai báo biến để xin
 //}
+//
+//#define _CRT_SECURE_NO_WARNINGS 
+//#include <stdio.h>
+//int main(void) {
+//	int arr[] = { 1,2,3,4 };
+//	// muốn lấy địa chỉ 
+//	// mối liên quan của địa chỉ này áp dụng được với tất cả các kiểu dữ liệu (int,char,...)
+//	//arr + 0 = &arr[0];
+//	//arr + 1 = &arr [1];
+//	//arr + 2 = &arr [2];
+//	//arr + 3 = &arr [3];
+//	// muốn lấy giá trị thì thêm *
+//	//VD: *(arr+0) = arr[0]; giá trị thì arr[0] không gán & lấy địa chỉ nha 
+//	//Cú pháp tương đương : *(px + 1) với px[1] kể cả khi printf vẫn dùng được
+//}
 
 #define _CRT_SECURE_NO_WARNINGS 
 #include <stdio.h>
-int main(void) {
-	int arr[] = { 1,2,3,4 };
-	// muốn lấy địa chỉ 
-	// mối liên quan của địa chỉ này áp dụng được với tất cả các kiểu dữ liệu (int,char,...)
-	//arr + 0 = &arr[0];
-	//arr + 1 = &arr [1];
-	//arr + 2 = &arr [2];
-	//arr + 3 = &arr [3];
-	// muốn lấy giá trị thì thêm *
-	//VD: *(arr+0) = arr[0]; giá trị thì arr[0] không gán & lấy địa chỉ nha 
-	//Cú pháp tương đương : *(px + 1) với px[1] kể cả khi printf vẫn dùng được
+#include "lib.h" //thư viện do mình tự tạo thì gọi trong dấu nháy kép
 
+int main(void) { //hàm duy nhất không cần gọi cũng chạy
+	in_duong_ke(10); //có printf sẵn nên khi gọi hàm không cần printf lần nữa
+	printf("TINH DIEM TRUNG BINH \n");
+	in_duong_ke(20);
+	int toan = 8;
+	int hoa = 7;
+	int ly = 7;
+	float diem_tb = tinh_diem_tb(toan, hoa, ly); //gán hàm với biến
+	printf("Diem trung binh cua hoc sinh A la: %.2f\n", diem_tb); // in biến ra 
+
+	int toan1 = 8;
+	int hoa1 = 9;
+	int ly1 = 9;
+	float diem_tb_1 = tinh_diem_tb(toan1, hoa1, ly1);  // nên khai báo biến để lưu nếu có nhu cầu tái sử dụng 
+	printf("Diem trung binh cua hoc sinh B la: %.2f\n", diem_tb_1); 
+
+	// hoặc có thể ghi ngắn gọn như này nếu hiểu được và muốn gãy gọn code 
+	printf("Diem trung binh cua hoc sinh C la: %.2f\n", tinh_diem_tb(10, 9, 9));
+	in_duong_ke(20);
+	printf("XEP LOAI\n");
+	in_duong_ke(10);
+	printf("Xep loai cua hoc sinh A la: %c\n", xep_loai(diem_tb));
+	printf("Xep loai cua hoc sinh B la: %c\n", xep_loai(diem_tb_1)); 
+	printf("Xep loai cua hoc sinh C la: %c\n", xep_loai(tinh_diem_tb(10, 9, 9))); //cũng có thể lồng ghép các hàm vô chung như này
+	int a = 5;
+	//tang_mot(a); // a là tham trị, không thể làm thay đổi giá trị của chính nó 
+	// muốn = 6 thì a = tang_mot(a);
+	tang_mot(&a); // truyền địa chỉ để thay đổi trực tiếp giá trị luôn
+	// truyền địa chỉ hay còn được gọi là truyền tham chiếu
+	printf("Bien a: %d\n", a); //vẫn là a=5 do int x trong hàm là 1 biến khởi tạo có địa chỉ mới và giá trị =6 sẽ lưu vào địa chỉ đó 
+	int m = 7;
+	int n = 8;
+	hoan_doi(&m, &n);
+	printf("Gia tri cua m bay gio la: %d\n", m); 
+	printf("Gia tri cua n bay gio la: %d\n", n);
+	int x = 10;
+	int y = 3;
+	int thuong = 0;
+	int du = 0;
+	chia_lay_du(x, y, &thuong, &du);
+	printf("%d chia %d bang %d du %d \n", x, y, thuong, du); //muốn hành động với nhiêu cái giá trị thì truyền bấy nhiêu điạ chỉ
+	// nên tách nhỏ chương trình, 1 hàm không nên làm quá nhiều công việc
 
 }
